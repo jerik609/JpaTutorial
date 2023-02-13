@@ -4,12 +4,9 @@ import com.jerikthedog.SpringDataJpaTutorial.entity.Guardian;
 import com.jerikthedog.SpringDataJpaTutorial.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest // this will result in changes in the database
 //@DataJpaTest // this should be used instead, since the changes are not persistent
@@ -78,5 +75,30 @@ class StudentRepositoryTest {
         List<Student> list = studentRepository.findByGuardianName("booo");
         System.out.println(list);
     }
+
+    @Test
+    public void printStudentByFirstnameAndLastname() {
+        Student student = studentRepository.findByFirstnameAndLastname("Michal", "mooo");
+        System.out.println("student = " + student);
+    }
+
+    @Test
+    public void printStudentByEmailIdUsingCustomJpqlQuery() {
+        Student student = studentRepository.getStudentByEmailAddress("michal@michal.sk");
+        System.out.println("student = " + student);
+    }
+
+    @Test
+    public void printStudentFirstnameByEmailIdUsingCustomJpqlQuery() {
+        String firstname = studentRepository.getStudentFirstnameByEmailAddress("michal@michal.sk");
+        System.out.println("firstname = " + firstname);
+    }
+
+    @Test
+    public void printStudentByEmailIdUsingCustomNativeQuery() {
+        Student student = studentRepository.getStudentByEmailAddressNative("michal@michal.sk");
+        System.out.println("student = " + student);
+    }
+
 
 }
