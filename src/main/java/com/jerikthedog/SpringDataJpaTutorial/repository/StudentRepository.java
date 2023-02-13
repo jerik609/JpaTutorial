@@ -76,6 +76,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     )
     int updateStudentNameByEmailId(String firstname, String emailId);
 
+    // @Modifying changes the "execution method" from executeQuery to executeUpdate
+
     // @Transactional vs private ?
 
     // https://www.baeldung.com/transaction-configuration-with-jpa-and-spring
