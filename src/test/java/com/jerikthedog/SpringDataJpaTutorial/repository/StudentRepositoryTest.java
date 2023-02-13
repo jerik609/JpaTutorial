@@ -73,5 +73,10 @@ class StudentRepositoryTest {
         System.out.println("lastname not null: " + list);
     }
 
+    @Test
+    public void printStudentByGuardianName() {
+        List<Student> list = studentRepository.findByGuardianName("booo");
+        System.out.println(list);
+    }
 
 }
