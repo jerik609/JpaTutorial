@@ -100,5 +100,11 @@ class StudentRepositoryTest {
         System.out.println("student = " + student);
     }
 
+    @Test
+    public void printStudentByEmailIdUsingCustomNativeQueryWithNamedParam() {
+        Student student = studentRepository.getStudentByEmailAddressNativeNamedParam("michal@michal.sk", "mooo");
+        System.out.println("student = " + student);
+    }
+
 
 }
