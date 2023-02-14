@@ -2,19 +2,20 @@ package com.jerikthedog.SpringDataJpaTutorial.test;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
+
+// indeed, transaction is not created for internal method call, despite being annotated with @Transactional
 
 @Service
 public class TestService {
 
     @Transactional
     public void invoice() {
+        System.out.println("invoice");
         createPdf();
-        // send invoice as email, etc.
     }
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void createPdf() {
-        // ...
+        System.out.println("createPdf");
     }
 }

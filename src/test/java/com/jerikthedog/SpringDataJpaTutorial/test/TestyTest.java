@@ -12,7 +12,7 @@ public class TestyTest {
 
     @Test
     public void doTest() {
-        testService.createPdf();
+        testService.invoice();
     }
 
 
