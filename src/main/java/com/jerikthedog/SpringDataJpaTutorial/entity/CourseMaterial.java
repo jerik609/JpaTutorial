@@ -31,7 +31,9 @@ public class CourseMaterial {
 
     // there's a 1:1 relationship with course, in fact, course material cannot exist w/o a course
     // we will define a foreign key constraint
-    @OneToOne // the relationship is one to one
+    @OneToOne( // the relationship is one to one
+            cascade = CascadeType.ALL // cascade tells JPA to save any associated entities (ALL = apply all necessary operations, "don't think about it too much")
+    )
     // finally, we need to define which column is the foreign key
     @JoinColumn(
             name = "course_id", // the name of the column of this entity (in the DB), which will contain the foreign key value

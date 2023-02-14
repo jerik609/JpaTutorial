@@ -29,7 +29,7 @@ class CourseMaterialRepositoryTest {
 
         // doing just this will not work, because of course, it must be saved first
         // we could of course autowire the course repository and save the course, but let's do
-        // CASCADING!
+        // CASCADING - enable cascading on the course material entity (off by default)
         courseMaterialRepository.save(courseMaterial);
     }
 
