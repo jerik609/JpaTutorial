@@ -1,12 +1,16 @@
 package com.jerikthedog.SpringDataJpaTutorial.repository;
 
 import com.jerikthedog.SpringDataJpaTutorial.entity.Student;
+import jakarta.transaction.TransactionManager;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.interceptor.TransactionInterceptor;
 
 import java.util.List;
 
@@ -87,4 +91,5 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     // two problems:
     // - private methods are not proxied
     // - when implementing an interface, only external calls are proxied
+
 }
