@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -31,6 +33,12 @@ class CourseMaterialRepositoryTest {
         // we could of course autowire the course repository and save the course, but let's do
         // CASCADING - enable cascading on the course material entity (off by default)
         courseMaterialRepository.save(courseMaterial);
+    }
+
+    @Test
+    public void printAllCourseMaterials() {
+        List<CourseMaterial> courseMaterials = courseMaterialRepository.findAll();
+        System.out.println("courseMaterials = " + courseMaterials);
     }
 
 

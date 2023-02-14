@@ -1,16 +1,14 @@
 package com.jerikthedog.SpringDataJpaTutorial.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString(exclude = "course") // exclude course from toString, as this will interfere with our lazy fetch of course
 public class CourseMaterial {
 
 
@@ -32,7 +30,9 @@ public class CourseMaterial {
     // there's a 1:1 relationship with course, in fact, course material cannot exist w/o a course
     // we will define a foreign key constraint
     @OneToOne( // the relationship is one to one
-            cascade = CascadeType.ALL // cascade tells JPA to save any associated entities (ALL = apply all necessary operations, "don't think about it too much")
+            cascade = CascadeType.ALL, // cascade tells JPA to save any associated entities (ALL = apply all necessary operations, "don't think about it too much")
+            // fetch type - when we fetch the CourseMaterial, shall we also fetch the related data - Course - immediately (eagerly) or later (lazily)?
+            fetch = FetchType.LAZY
     )
     // finally, we need to define which column is the foreign key
     @JoinColumn(
