@@ -3,6 +3,17 @@ JPA tutorial
 
 Based on: https://youtube.com/watch?v=XszpXoII9Sg&feature=shares
 
+## Notes
+
+### Default CRUD and transactions
+
+- https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#transactions
+
+By default, CRUD methods on repository instances inherited from SimpleJpaRepository are transactional.
+For read operations, the transaction configuration readOnly flag is set to true.
+All others are configured with a plain @Transactional so that default transaction configuration applies.
+Repository methods that are backed by transactional repository fragments inherit the transactional attributes from the actual fragment method.
+
 ## Links
 
 https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
