@@ -32,7 +32,8 @@ public class CourseMaterial {
     @OneToOne( // the relationship is one to one
             cascade = CascadeType.ALL, // cascade tells JPA to save any associated entities (ALL = apply all necessary operations, "don't think about it too much")
             // fetch type - when we fetch the CourseMaterial, shall we also fetch the related data - Course - immediately (eagerly) or later (lazily)?
-            fetch = FetchType.LAZY
+            fetch = FetchType.LAZY,
+            optional = false // we do not want to allow to enter a course material without a course!
     )
     // finally, we need to define which column is the foreign key
     @JoinColumn(

@@ -26,7 +26,7 @@ class CourseMaterialRepositoryTest {
 
         CourseMaterial courseMaterial = CourseMaterial.builder()
                 .url("www.google.com")
-                .course(course)
+                .course(course) // since optional is false on course material entity, course must be always provided!
                 .build();
 
         // doing just this will not work, because of course, it must be saved first
