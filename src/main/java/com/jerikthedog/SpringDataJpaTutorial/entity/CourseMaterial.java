@@ -11,9 +11,6 @@ import lombok.*;
 @ToString(exclude = "course") // exclude course from toString, as this will interfere with our lazy fetch of course
 public class CourseMaterial {
 
-
-
-
     @Id
     @SequenceGenerator(
             name = "course_material_sequence",

@@ -1,8 +1,13 @@
 package com.jerikthedog.SpringDataJpaTutorial.repository;
 
 import com.jerikthedog.SpringDataJpaTutorial.entity.Course;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+// every JpaRepository extends a paging and sorting repository
 
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
@@ -14,4 +19,12 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     Repository methods that are backed by transactional repository fragments inherit the transactional attributes
     from the actual fragment method.
      */
+
+    // custom sorting method
+
+    Page<Course> findByTitleContaining(
+            String title,
+            Pageable pageRequest
+    );
+
 }
