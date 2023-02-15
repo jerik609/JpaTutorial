@@ -32,6 +32,10 @@ public class Course {
     )
     private CourseMaterial courseMaterial;
 
+    // Vlad says, use ManyToOne by default - it should mostly suffice :-)
+    // -> the List<Child> is a dangerous thing ..., lazy is dangerous, etc ... see README.md for more info
+    // https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/
+
     // we reversed the one-to-many which we defined @ the Teacher class to many-to-one defined here (in Course)
     // so @ Teacher we said - one teacher teaches many courses
     // here we're saying - many courses can be taught by a particular teacher
