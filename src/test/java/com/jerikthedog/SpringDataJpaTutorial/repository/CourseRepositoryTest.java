@@ -1,6 +1,8 @@
 package com.jerikthedog.SpringDataJpaTutorial.repository;
 
 import com.jerikthedog.SpringDataJpaTutorial.entity.Course;
+import com.jerikthedog.SpringDataJpaTutorial.entity.CourseMaterial;
+import com.jerikthedog.SpringDataJpaTutorial.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,5 +33,23 @@ class CourseRepositoryTest {
         // so how do we get the course materials when we have a course?
         // so how do we create a bidirectional relationship?
     }
+
+    @Test
+    public void saveCourseWithTeacher() {
+
+        Teacher teacher = Teacher.builder()
+                .firstname("Peter")
+                .lastname("Black")
+                .build();
+
+        Course course = Course.builder()
+                .credit(30)
+                .title("brain surgery")
+                .teacher(teacher)
+                .build();
+
+        courseRepository.save(course);
+    }
+
 
 }

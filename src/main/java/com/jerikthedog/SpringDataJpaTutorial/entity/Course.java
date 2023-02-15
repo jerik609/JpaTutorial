@@ -32,4 +32,16 @@ public class Course {
     )
     private CourseMaterial courseMaterial;
 
+    // we reversed the one-to-many which we defined @ the Teacher class to many-to-one defined here (in Course)
+    // so @ Teacher we said - one teacher teaches many courses
+    // here we're saying - many courses can be taught by a particular teacher
+    @ManyToOne(
+            cascade = CascadeType.ALL // so that we can save teacher along the course at the same time (in one save() call)
+    )
+    @JoinColumn(
+            name = "teacher_id", // name of the DB column in the course table, which will contain the foreign key
+            referencedColumnName = "id" // id of the Teacher (the actual property name of the Teacher class)
+    )
+    private Teacher teacher;
+
 }
