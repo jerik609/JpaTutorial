@@ -27,4 +27,9 @@ public class Course {
     private String title;
     private Integer credit;
 
+    @OneToOne( // but no joining column, as this is done in course material, so we need to do:
+            mappedBy = "course" // the name of the attribute in the CourseMaterial object, which refers to a (the?) course
+    )
+    private CourseMaterial courseMaterial;
+
 }
