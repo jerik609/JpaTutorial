@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -47,5 +50,27 @@ public class Course {
             referencedColumnName = "id" // id of the Teacher (the actual property name of the Teacher class)
     )
     private Teacher teacher;
+
+    // MANY-TO-MANY
+    // many to many with student!
+
+    @ManyToMany
+    @JoinTable( // this defines the third table
+            name = "student_course_map", // the name of the new table :-)
+            joinColumns = @JoinColumn( // how we (course) join to the new table
+                    name = "course_id",
+                    referencedColumnName = "id" // referenced here is the course (course id) = this is the id of the course!
+            ),
+            inverseJoinColumns = @JoinColumn( // how does the other (counter-)entity (student) join with this new table
+                    name = "student_id",
+                    referencedColumnName = "studentId" // the id at the Students side of things
+            )
+    ) // the sql statements will probably be a messy pile of complex obscure woohoo
+    private List<Student> students; // actually it's very simple (inefficient, but simple - such things always are)
+
+    public void addStudents(Student student) {
+        if (students == null) students = new ArrayList<>();
+        students.add(student);
+    }
 
 }
