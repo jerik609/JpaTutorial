@@ -54,7 +54,9 @@ public class Course {
     // MANY-TO-MANY
     // many to many with student!
 
-    @ManyToMany
+    @ManyToMany(
+            cascade = CascadeType.ALL // enable to insert/update/delete all related (provided) entities in cascade
+    )
     @JoinTable( // this defines the third table
             name = "student_course_map", // the name of the new table :-)
             joinColumns = @JoinColumn( // how we (course) join to the new table

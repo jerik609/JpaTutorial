@@ -1,6 +1,7 @@
 package com.jerikthedog.SpringDataJpaTutorial.repository;
 
 import com.jerikthedog.SpringDataJpaTutorial.entity.Course;
+import com.jerikthedog.SpringDataJpaTutorial.entity.Student;
 import com.jerikthedog.SpringDataJpaTutorial.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,6 +106,30 @@ class CourseRepositoryTest {
         List<Course> list = courseRepository.findByTitleContaining("brain", firstPageTenRecords).getContent();
 
         System.out.println("list = " + list);
+    }
+
+    @Test
+    public void saveCourseWithStudentAndTeacher() {
+        Teacher teacher = Teacher.builder()
+                .firstname("Lizze")
+                .lastname("Morgan")
+                .build();
+
+        Course course = Course.builder()
+                .title("JPA stuff moo")
+                .credit(100)
+                .teacher(teacher)
+                .build();
+
+        Student student = Student.builder()
+                .firstname("Abhishek")
+                .lastname("Singh")
+                .emailId("abishek@abi.com")
+                .build();
+
+        course.addStudents(student);
+
+        courseRepository.save(course);
     }
 
 }
