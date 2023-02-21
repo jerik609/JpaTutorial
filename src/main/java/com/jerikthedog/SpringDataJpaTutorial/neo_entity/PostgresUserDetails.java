@@ -11,8 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PostgresUserDetails {
 
-    //private long FOREIGN_KEY_FOO_FIELD;
-
     @Id
     @SequenceGenerator(
             name = "user_details_sequence",
@@ -30,10 +28,9 @@ public class PostgresUserDetails {
     private String location;
     private String email;
 
-    //@OneToOne(mappedBy = "user_details_reference")
-    //private PostgresUser postgresUser;
+    @OneToOne(mappedBy = "postgresUserDetails")
+    private PostgresUser postgresUser;
 }
-
 
 /* I think the example for one-to-one unidirectional relationship is plainly wrong and utterly confusing.
 

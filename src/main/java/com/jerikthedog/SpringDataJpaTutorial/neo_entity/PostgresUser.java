@@ -31,8 +31,10 @@ public class PostgresUser {
     private long id;
 
     @OneToOne
-    //@JoinColumn(name = "user_details_foreign_key", nullable = false)
-    @PrimaryKeyJoinColumn(name = "name = user_details_foreign_key")
+    @JoinColumn(
+            name = "user_details_foreign_key",
+            referencedColumnName = "postgres_user_detail_id",
+            nullable = false)
     @Cascade(CascadeType.ALL)
     private PostgresUserDetails postgresUserDetails;
 
