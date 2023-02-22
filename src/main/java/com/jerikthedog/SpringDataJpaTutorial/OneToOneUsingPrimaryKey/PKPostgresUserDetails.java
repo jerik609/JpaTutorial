@@ -23,7 +23,9 @@ public class PKPostgresUserDetails {
     @OneToOne
     @MapsId // maps this primary key to our ID key, so e.g. our ID does not have to be generated, since we'll take the referenced value
     @JoinColumn(
-            name = "postgres_user_detail_id", // join on PostgresUser's ID column
+            // the name of the key within this table - will replace the name of existing key, since we're "MapsId"-ing here
+            name = "overrides_the_name_of_the_key_of_this_table",
+            // referenced column = key at the "other" table
             referencedColumnName = "id"
     )
     @Cascade(CascadeType.ALL)
