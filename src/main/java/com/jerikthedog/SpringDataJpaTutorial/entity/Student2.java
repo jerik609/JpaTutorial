@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Table(
-        name = "tbl_student", // custom table name
+        name = "tbltbltbl_student", // custom table name
         uniqueConstraints = @UniqueConstraint( // email ID should be unique, as it identifies the student
                 name = "emailid_unique",
                 columnNames = "email_address"

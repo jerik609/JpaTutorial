@@ -54,7 +54,7 @@ public class TwitterTest {
                 .courseList(List.of(course))
                 .build();
 
-        manyManyStudentRepository.save(student);
+//        manyManyStudentRepository.save(student);
 
     }
 

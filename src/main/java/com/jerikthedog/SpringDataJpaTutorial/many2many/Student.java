@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
@@ -14,10 +13,20 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "tbl_student")
 public class Student {
 
     @Id
-    @GeneratedValue
+//    @SequenceGenerator(
+//            name = "student_seq_gen",
+//            sequenceName = "student_seq_gen",
+//            allocationSize = 1
+//    )
+//    @GeneratedValue(
+//            strategy = GenerationType.SEQUENCE,
+//            generator = "student_seq_gen"
+//    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long studentId;
 
     @ManyToMany(mappedBy = "students", cascade = CascadeType.ALL)
