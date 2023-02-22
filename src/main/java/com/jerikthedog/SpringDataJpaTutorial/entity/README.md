@@ -24,7 +24,7 @@ here it would be complicated, so how do we do that (hint - the "join table") a n
 
 https://www.baeldung.com/jpa-many-to-many
 
-An example is students and courses : "A student can opt for many courses and course can be visited by many students."
+An example is students and cours : "A student2 can opt for many cours and course2 can be visited by many students."
 
--> so student can have many entries differing on course id as foreign key
--> courses can have many students
+-> so student2 can have many entries differing on course2 id as foreign key
+-> cours can have many students

@@ -1,36 +1,32 @@
 package com.jerikthedog.SpringDataJpaTutorial.repository;
 
-import com.jerikthedog.SpringDataJpaTutorial.entity.Student;
-import jakarta.transaction.TransactionManager;
+import com.jerikthedog.SpringDataJpaTutorial.entity.Student2;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.interceptor.TransactionInterceptor;
 
 import java.util.List;
 
 // https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student, Long> {
+public interface StudentRepository extends JpaRepository<Student2, Long> {
 
     // custom methods
 
-    List<Student> findByFirstname(String firstname);
+    List<Student2> findByFirstname(String firstname);
 
-    List<Student> findByFirstnameContaining(String name);
+    List<Student2> findByFirstnameContaining(String name);
 
-    List<Student> findByLastnameNotNull();
+    List<Student2> findByLastnameNotNull();
 
     // works on embedded classes too - first we provide the name of the embedded member, then member of the member
-    List<Student> findByGuardianName(String name);
+    List<Student2> findByGuardianName(String name);
 
-    Student findByFirstnameAndLastname(String firstname, String lastname);
+    Student2 findByFirstnameAndLastname(String firstname, String lastname);
 
     // this is an example, where the automatically built JPQL is not enough, and we want our own query
     // on purpose we use get to avoid building a JPQL automatically
@@ -38,11 +34,11 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     // with the class names, not the table names in the query ... it IS NOT SQL, it just looks
     // similar
     // JPQL
-    @Query("select s from Student s where s.emailId = ?1") // JPQL // ?1 = first attribute
-    Student getStudentByEmailAddress(String emailId);
+    @Query("select s from Student2 s where s.emailId = ?1") // JPQL // ?1 = first attribute
+    Student2 getStudentByEmailAddress(String emailId);
 
     // JPQL with single return value
-    @Query("select s.firstname from Student s where s.emailId = ?1") // JPQL // ?1 = first attribute
+    @Query("select s.firstname from Student2 s where s.emailId = ?1") // JPQL // ?1 = first attribute
     String getStudentFirstnameByEmailAddress(String emailId);
 
     // Assume we have very complex objects/logic where JPQL will not help, so we need native SQL queries
@@ -51,7 +47,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             value = "SELECT * FROM tbl_student s WHERE s.email_address = ?1",
             nativeQuery = true
     )
-    Student getStudentByEmailAddressNative(String emailId);
+    Student2 getStudentByEmailAddressNative(String emailId);
 
     // ?1, ?2, ?3 for parameters is not always a good thing, but we can define named parameters
     // Native Query with named param
@@ -59,7 +55,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             value = "SELECT * FROM tbl_student s WHERE s.email_address = :emailId AND s.lastname = :lastname",
             nativeQuery = true // NATIVE SQL QUERY!
     )
-    Student getStudentByEmailAddressNativeNamedParam(
+    Student2 getStudentByEmailAddressNativeNamedParam(
             @Param("emailId") String emailId,
             @Param("lastname") String lastname
             // there can of course be multiple named param here :-)

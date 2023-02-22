@@ -1,7 +1,7 @@
 package com.jerikthedog.SpringDataJpaTutorial.repository;
 
-import com.jerikthedog.SpringDataJpaTutorial.entity.Course;
-import com.jerikthedog.SpringDataJpaTutorial.entity.Student;
+import com.jerikthedog.SpringDataJpaTutorial.entity.Course2;
+import com.jerikthedog.SpringDataJpaTutorial.entity.Student2;
 import com.jerikthedog.SpringDataJpaTutorial.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,8 @@ import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
-class CourseRepositoryTest {
+class Course2RepositoryTest {
 
     @Autowired
     private CourseRepository courseRepository;
@@ -24,8 +22,8 @@ class CourseRepositoryTest {
 
     @Test
     public void printCourses() {
-        List<Course> courses = courseRepository.findAll();
-        System.out.println("courses = " + courses);
+        List<Course2> cours = courseRepository.findAll();
+        System.out.println("courses = " + cours);
 
         // how do we get the course materials?
         // the course material has reference to the course and the relationship defined
@@ -46,13 +44,13 @@ class CourseRepositoryTest {
                 .lastname("Black")
                 .build();
 
-        Course course = Course.builder()
+        Course2 course2 = Course2.builder()
                 .credit(30)
                 .title("brain surgery")
                 .teacher(teacher)
                 .build();
 
-        courseRepository.save(course);
+        courseRepository.save(course2);
     }
 
     // PAGING!
@@ -61,15 +59,15 @@ class CourseRepositoryTest {
         Pageable firstPageWithThreeRecords = PageRequest.of(0, 3); // page 0 is the first page
         Pageable secondPageWithTwoRecords = PageRequest.of(1, 2);
 
-        Page<Course> pageOne = courseRepository.findAll(firstPageWithThreeRecords);
-        Page<Course> pageTwo = courseRepository.findAll(secondPageWithTwoRecords);
+        Page<Course2> pageOne = courseRepository.findAll(firstPageWithThreeRecords);
+        Page<Course2> pageTwo = courseRepository.findAll(secondPageWithTwoRecords);
 
-        List<Course> courses = pageOne.getContent();
-        List<Course> courses2 = pageTwo.getContent();
+        List<Course2> cours = pageOne.getContent();
+        List<Course2> courses2 = pageTwo.getContent();
 
         System.out.println("total pages = " + pageOne.getTotalPages());
         System.out.println("total elements = " + pageOne.getTotalElements());
-        System.out.println("courses = " + courses);
+        System.out.println("courses = " + cours);
 
         System.out.println("total pages = " + pageTwo.getTotalPages());
         System.out.println("total elements = " + pageTwo.getTotalElements());
@@ -85,13 +83,13 @@ class CourseRepositoryTest {
 
         Pageable sortByCreditDescAndTitleAsc = PageRequest.of(0, 4, Sort.by("credit").descending().and(Sort.by("title").ascending()));
 
-        Page<Course> page = courseRepository.findAll(sortByTitle);
+        Page<Course2> page = courseRepository.findAll(sortByTitle);
 
         System.out.println("total pages = " + page.getTotalPages());
         System.out.println("total elements = " + page.getTotalElements());
         System.out.println("courses = " + page.getContent());
 
-        Page<Course> pageX = courseRepository.findAll(sortByCreditDescAndTitleAsc);
+        Page<Course2> pageX = courseRepository.findAll(sortByCreditDescAndTitleAsc);
 
         System.out.println("X:total pages = " + pageX.getTotalPages());
         System.out.println("X:total elements = " + pageX.getTotalElements());
@@ -103,7 +101,7 @@ class CourseRepositoryTest {
     public void findByTitleContainingPaging() {
         Pageable firstPageTenRecords = PageRequest.of(0, 10);
 
-        List<Course> list = courseRepository.findByTitleContaining("brain", firstPageTenRecords).getContent();
+        List<Course2> list = courseRepository.findByTitleContaining("brain", firstPageTenRecords).getContent();
 
         System.out.println("list = " + list);
     }
@@ -115,21 +113,21 @@ class CourseRepositoryTest {
                 .lastname("Morgan")
                 .build();
 
-        Course course = Course.builder()
+        Course2 course2 = Course2.builder()
                 .title("JPA stuff moo")
                 .credit(100)
                 .teacher(teacher)
                 .build();
 
-        Student student = Student.builder()
+        Student2 student2 = Student2.builder()
                 .firstname("Abhishek")
                 .lastname("Singh")
                 .emailId("abishek@abi.com")
                 .build();
 
-        course.addStudents(student);
+        course2.addStudents(student2);
 
-        courseRepository.save(course);
+        courseRepository.save(course2);
     }
 
 }

@@ -1,7 +1,10 @@
 package com.jerikthedog.SpringDataJpaTutorial.test;
 
+import com.jerikthedog.SpringDataJpaTutorial.many2many.Course;
+import com.jerikthedog.SpringDataJpaTutorial.many2many.Student;
 import com.jerikthedog.SpringDataJpaTutorial.one2many.Post;
 import com.jerikthedog.SpringDataJpaTutorial.one2many.Tweet;
+import com.jerikthedog.SpringDataJpaTutorial.repository.ManyManyStudentRepository;
 import com.jerikthedog.SpringDataJpaTutorial.repository.OneToManyTweetRepository;
 import com.jerikthedog.SpringDataJpaTutorial.repository.PostRepository;
 import org.junit.jupiter.api.Test;
@@ -18,6 +21,9 @@ public class TwitterTest {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private ManyManyStudentRepository manyManyStudentRepository;
 
     @Test
     public void testTweets() {
@@ -36,6 +42,20 @@ public class TwitterTest {
 
         oneToManyTweetRepository.save(tweet);
         //postRepository.save(post);
+    }
+
+    @Test
+    public void manymanymany() {
+
+        Course course = Course.builder()
+                .build();
+
+        Student student = Student.builder()
+                .courseList(List.of(course))
+                .build();
+
+        manyManyStudentRepository.save(student);
+
     }
 
 }

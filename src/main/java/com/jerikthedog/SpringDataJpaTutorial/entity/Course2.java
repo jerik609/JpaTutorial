@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Course {
+public class Course2 {
 
     @Id
     @SequenceGenerator(
@@ -31,7 +31,7 @@ public class Course {
     private Integer credit;
 
     @OneToOne( // but no joining column, as this is done in course material, so we need to do:
-            mappedBy = "course" // the name of the attribute in the CourseMaterial object, which refers to a (the?) course
+            mappedBy = "course2" // the name of the attribute in the CourseMaterial object, which refers to a (the?) course
     )
     private CourseMaterial courseMaterial;
 
@@ -68,11 +68,11 @@ public class Course {
                     referencedColumnName = "studentId" // the id at the Students side of things
             )
     ) // the sql statements will probably be a messy pile of complex obscure woohoo
-    private List<Student> students; // actually it's very simple (inefficient, but simple - such things always are)
+    private List<Student2> student2s; // actually it's very simple (inefficient, but simple - such things always are)
 
-    public void addStudents(Student student) {
-        if (students == null) students = new ArrayList<>();
-        students.add(student);
+    public void addStudents(Student2 student2) {
+        if (student2s == null) student2s = new ArrayList<>();
+        student2s.add(student2);
     }
 
 }

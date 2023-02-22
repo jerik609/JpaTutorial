@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
                 columnNames = "email_address"
         )
 )
-public class Student {
+public class Student2 {
 
     @Id
     // oracle and postgres are able to provide sequences automatically, but mysql does not have

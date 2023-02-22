@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString(exclude = "course") // exclude course from toString, as this will interfere with our lazy fetch of course
+@ToString(exclude = "course2") // exclude course from toString, as this will interfere with our lazy fetch of course
 public class CourseMaterial {
 
     @Id
@@ -37,6 +37,6 @@ public class CourseMaterial {
             name = "course_id", // the name of the column of this entity (in the DB), which will contain the foreign key value
             referencedColumnName = "id" // the name of the column of the referenced entity, which contains the foreign key
     )
-    private Course course;
+    private Course2 course2;
 
 }

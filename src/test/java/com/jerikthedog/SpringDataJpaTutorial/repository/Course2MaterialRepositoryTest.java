@@ -1,6 +1,6 @@
 package com.jerikthedog.SpringDataJpaTutorial.repository;
 
-import com.jerikthedog.SpringDataJpaTutorial.entity.Course;
+import com.jerikthedog.SpringDataJpaTutorial.entity.Course2;
 import com.jerikthedog.SpringDataJpaTutorial.entity.CourseMaterial;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
-class CourseMaterialRepositoryTest {
+class Course2MaterialRepositoryTest {
 
     @Autowired
     private CourseMaterialRepository courseMaterialRepository;
@@ -19,14 +17,14 @@ class CourseMaterialRepositoryTest {
     @Test
     public void SaveCourseMaterial() {
 
-        Course course = Course.builder()
+        Course2 course2 = Course2.builder()
                 .credit(6)
                 .title("Google Course")
                 .build();
 
         CourseMaterial courseMaterial = CourseMaterial.builder()
                 .url("www.google.com")
-                .course(course) // since optional is false on course material entity, course must be always provided!
+                .course2(course2) // since optional is false on course material entity, course must be always provided!
                 .build();
 
         // doing just this will not work, because of course, it must be saved first

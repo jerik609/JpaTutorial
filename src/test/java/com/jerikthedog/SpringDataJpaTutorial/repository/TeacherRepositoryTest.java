@@ -1,14 +1,10 @@
 package com.jerikthedog.SpringDataJpaTutorial.repository;
 
-import com.jerikthedog.SpringDataJpaTutorial.entity.Course;
+import com.jerikthedog.SpringDataJpaTutorial.entity.Course2;
 import com.jerikthedog.SpringDataJpaTutorial.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class TeacherRepositoryTest {
@@ -19,12 +15,12 @@ class TeacherRepositoryTest {
     @Test
     public void saveTeacher() {
 
-        Course course = Course.builder()
+        Course2 course = Course2.builder()
                 .title("Knitting")
                 .credit(1)
                 .build();
 
-        Course course2 = Course.builder()
+        Course2 course2 = Course2.builder()
                 .title("Baking")
                 .credit(2)
                 .build();
