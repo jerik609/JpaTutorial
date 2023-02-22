@@ -32,7 +32,9 @@ public class PostgresUser {
 
     @OneToOne
     @JoinColumn(
+            // the name of the join column, this will be the FK column, which hibernates creates within this table
             name = "user_details_foreign_key",
+            // column name of the id, which our FK refers to (id of the "other" table (= PostgresUserDetails key)
             referencedColumnName = "postgres_user_detail_id",
             nullable = false)
     @Cascade(CascadeType.ALL)
