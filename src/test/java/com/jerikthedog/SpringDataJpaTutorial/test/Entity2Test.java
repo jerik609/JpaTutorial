@@ -1,15 +1,12 @@
 package com.jerikthedog.SpringDataJpaTutorial.test;
 
-import com.jerikthedog.SpringDataJpaTutorial.entity2.Tweet;
+import com.jerikthedog.SpringDataJpaTutorial.entity2.Tweet2;
 import com.jerikthedog.SpringDataJpaTutorial.entity2.UserX;
 import com.jerikthedog.SpringDataJpaTutorial.repository.TweetRepository;
 import com.jerikthedog.SpringDataJpaTutorial.repository.UserXRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootTest
 public class Entity2Test {
@@ -27,13 +24,13 @@ public class Entity2Test {
                 .id(10)
                 .build();
 
-        Tweet tweet = Tweet.builder()
+        Tweet2 tweet2 = Tweet2.builder()
                 .id(111)
                 .userX(userX)
                 .build();
 
-        repository.save(tweet);
-        repository.delete(tweet);
+        repository.save(tweet2);
+        repository.delete(tweet2);
 
 /*
 MANY TO ONE ON SUBORDINATE

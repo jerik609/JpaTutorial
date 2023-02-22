@@ -2,7 +2,6 @@ package com.jerikthedog.SpringDataJpaTutorial.entity2;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +9,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,6 +36,6 @@ public class UserX {
 //            referencedColumnName = "id" // this user id
 //    )
     @Cascade(CascadeType.ALL)
-    private List<Tweet> tweets;
+    private List<Tweet2> tweet2s;
 
 }

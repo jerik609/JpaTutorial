@@ -11,7 +11,7 @@ import org.hibernate.annotations.CascadeType;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tweet {
+public class Tweet2 {
 
     @Id
     @Column(name = "tweet_id")
