@@ -23,11 +23,15 @@ public class Tweet {
 
     private String text;
 
-    @OneToMany
-    @JoinColumn(
-            name = "tweet_id_foreign_key",
-            referencedColumnName = "tweetId"
-    )
-    @Cascade(CascadeType.ALL)
-    private List<Post> postList;
+    @OneToMany(mappedBy = "tweet") // A
+    @Cascade(CascadeType.ALL) // B
+    private List<Post> postList; // C
+
+//    @OneToMany
+//    @JoinColumn(
+//            name = "tweet_id_foreign_key",
+//            referencedColumnName = "tweetId"
+//    )
+//    @Cascade(CascadeType.ALL)
+//    private List<Post> postList;
 }
