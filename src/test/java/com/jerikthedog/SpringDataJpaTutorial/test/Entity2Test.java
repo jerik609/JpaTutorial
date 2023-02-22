@@ -30,7 +30,7 @@ public class Entity2Test {
                 .build();
 
         repository.save(tweet2);
-        repository.delete(tweet2);
+        //repository.delete(tweet2);
 
 /*
 MANY TO ONE ON SUBORDINATE

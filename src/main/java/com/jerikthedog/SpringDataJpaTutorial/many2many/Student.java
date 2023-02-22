@@ -1,12 +1,10 @@
 package com.jerikthedog.SpringDataJpaTutorial.many2many;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -17,19 +15,16 @@ import java.util.List;
 public class Student {
 
     @Id
-//    @SequenceGenerator(
-//            name = "student_seq_gen",
-//            sequenceName = "student_seq_gen",
-//            allocationSize = 1
-//    )
-//    @GeneratedValue(
-//            strategy = GenerationType.SEQUENCE,
-//            generator = "student_seq_gen"
-//    )
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long studentId;
 
-    @ManyToMany(mappedBy = "students", cascade = CascadeType.ALL)
-    private List<Course> courseList;
-
+    @ManyToMany(
+            mappedBy = "students", // defines the many to many relationship, states that mapping is done at the other entity
+            cascade = CascadeType.ALL
+    )
+    // @Data generates hashCode and ToString methods with cross-dependent fields and this structure leads to ...
+    @ToString.Exclude // ... infinite recursive calls when used with Hibernate
+    @EqualsAndHashCode.Exclude // ... infinite recursive calls when used with Hibernate
+    @Builder.Default // create an empty HashSet as builder default value
+    private Set<Course> courseList = new HashSet<>(); // references to the related entities
 }

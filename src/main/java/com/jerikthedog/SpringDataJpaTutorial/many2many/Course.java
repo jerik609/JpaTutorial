@@ -1,13 +1,10 @@
 package com.jerikthedog.SpringDataJpaTutorial.many2many;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -18,37 +15,36 @@ import java.util.List;
 public class Course {
 
     @Id
-//    @SequenceGenerator(
-//            name = "course_seq_gen",
-//            sequenceName = "course_seq_gen",
-//            allocationSize = 1
-//    )
-//    @GeneratedValue(
-//            strategy = GenerationType.SEQUENCE,
-//            generator = "course_seq_gen"
-//    )
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
 
     @ManyToMany(
-            cascade = CascadeType.ALL // enable to insert/update/delete all related (provided) entities in cascade
+            cascade = CascadeType.ALL // enable automatic insert/update/delete of all related (provided) entities in cascade
     )
-    @JoinTable( // this defines the third table
-            name = "tbl_student_course_map", // the name of the new table :-)
-            joinColumns = @JoinColumn( // how we (course) join to the new table
+    @JoinTable( // this defines the join table
+            name = "tbl_student_course_map", // the name of the join table
+            joinColumns = @JoinColumn( // how entity Course maps to the join table
                     name = "course_id", // name of column holding the foreign key in the join table
-                    referencedColumnName = "id" // the referenced column is the primary key of the course, the ID of this entity (this = course)
+                    referencedColumnName = "id" // the referenced column is the primary key of the course, the ID of this entity (this = Course)
             ),
-            inverseJoinColumns = @JoinColumn( // how does the other (counter-)entity (student) join with this new table
+            inverseJoinColumns = @JoinColumn( // how does the other (counter-)entity (Student) map to the join table
                     name = "student_id", // name of the column in the join table, holding the foreign key
                     referencedColumnName = "studentId" // the primary key of the student entity, which the foreign key refers to
             )
-    ) // the sql statements will probably be a messy pile of complex obscure woohoo
-    private List<Student> students; // actually it's very simple (inefficient, but simple - such things always are)
+    )
+    // @Data generates hashCode and ToString methods with cross-dependent fields and this structure leads to ...
+    @ToString.Exclude // ... infinite recursive calls when used with Hibernate
+    @EqualsAndHashCode.Exclude // ... infinite recursive calls when used with Hibernate
+    @Builder.Default // create an empty HashSet as builder default value
+    private Set<Student> students = new HashSet<>(); // reference(s) to the related entities
 
-    public void addStudents(Student student) {
-        if (students == null) students = new ArrayList<>();
-        students.add(student);
+    public void addStudent(Student s) {
+        this.students.add(s);
+        s.getCourseList().add(this);
     }
 
+    public void removeStudent(Student s) {
+        this.students.remove(s);
+        s.getCourseList().remove(this);
+    }
 }
