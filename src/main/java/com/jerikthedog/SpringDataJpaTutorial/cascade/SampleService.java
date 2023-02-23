@@ -23,12 +23,12 @@ public class SampleService {
         transaction.commit();
     }
 
-//    public void saveOrder(Order order) {
-//        EntityManager entityManager = entityManagerFactory.createEntityManager();
-//        final var transaction = entityManager.getTransaction();
-//        transaction.begin();
-//        entityManager.persist(order);
-//        transaction.commit();
-//    }
+    public void saveOrder(Order order) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        final var transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.persist(order);
+        transaction.commit();
+    }
 
 }

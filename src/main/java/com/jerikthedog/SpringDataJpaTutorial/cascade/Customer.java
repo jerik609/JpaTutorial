@@ -5,6 +5,10 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// https://stackoverflow.com/questions/73156573/onetomany-foreign-key-is-null
+
+// PARENT ENTITY
+
 @Entity
 @Table(name = "cs_customers")
 public class Customer {
@@ -14,8 +18,6 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<>();
-
-    // https://stackoverflow.com/questions/73156573/onetomany-foreign-key-is-null
 
     public void addOrder(Order order) {
         orderList.add(order);

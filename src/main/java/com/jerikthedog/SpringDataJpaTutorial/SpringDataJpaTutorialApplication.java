@@ -14,32 +14,29 @@ import org.springframework.context.annotation.Bean;
 public class SpringDataJpaTutorialApplication {
 
 	private final SampleService service;
-//	private final CascadeCustomerRepository repository;
 
 	@Autowired
-	SpringDataJpaTutorialApplication(SampleService service) { //, CascadeCustomerRepository repository) {
+	SpringDataJpaTutorialApplication(SampleService service) {
 		this.service = service;
-//		this.repository = repository;
 	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringDataJpaTutorialApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner run() {
-		return args -> {
-			final var order = new Order();
-			final var customer = new Customer();
-			customer.addOrder(order);
-
-			//repository.save(customer);
-			service.saveCustomer(customer);
-
-//			final var customer = new Customer();
+//	@Bean
+//	public CommandLineRunner run() {
+//		return args -> {
 //			final var order = new Order();
-//			order.setCustomer(customer);
-//			service.saveOrder(order);
-		};
-	}
+//			final var customer = new Customer();
+//			customer.addOrder(order);
+//			service.saveCustomer(customer);
+//
+//			System.out.println("=======================================");
+//
+//			final var order2 = new Order();
+//			order2.setCustomer(customer);
+//			service.saveOrder(order2);
+//		};
+//	}
 }

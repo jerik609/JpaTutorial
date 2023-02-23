@@ -2,6 +2,8 @@ package com.jerikthedog.SpringDataJpaTutorial.cascade;
 
 import jakarta.persistence.*;
 
+// CHILD ENTITY
+
 @Entity
 @Table(name = "cs_orders")
 public class Order {
@@ -9,7 +11,7 @@ public class Order {
     @GeneratedValue
     private long order_id;
 
-    @ManyToOne//(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "customer_fk")
     private Customer customer;
 

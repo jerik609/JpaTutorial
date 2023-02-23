@@ -46,12 +46,25 @@ public class EntityService {
     public void addPersonToSet() {
         entityManager.getTransaction().begin();
 
-        Animal foundAnimal = entityManager.find(Animal.class, 2L);
-        Person newDogLover = new Person("Emma", 5);
+        //Animal foundAnimal = entityManager.find(Animal.class, 2L);
+        Animal catBob = new Animal("cat", "Bob", false);
+        entityManager.persist(catBob);
+
+        System.out.println("cat added");
+
+        Person newCatLover = new Person("Emma", 5);
+
+        System.out.println("???");
 
         // INSERT INTO person VALUES("Emma", 5);
         // INSERT INTO animal_person VALUES(2, 4)
-        foundAnimal.getPeopleInContact().add(newDogLover);
+        // this works, since animal is owner of the foreign key, so it will update it too (?)
+        //catBob.getPeopleInContact().add(newCatLover);
+        catBob.addPerson(newCatLover);
+
+        System.out.println("dog lover person added!!!");
+
+        //newCatLover.getAnimalsInContact().add(catBob);
 
         entityManager.getTransaction().commit();
         entityManager.clear();
@@ -65,6 +78,7 @@ public class EntityService {
 
         // DELETE FROM animal_person
         // WHERE animal_id=1 and person_id=1
+        // this works, since animal is owner of the foreign key, so it will update it too (?)
         foundAnimal.getPeopleInContact().remove(firstPersonFromSet);
 
         entityManager.getTransaction().commit();
@@ -74,12 +88,24 @@ public class EntityService {
     public void addAnimalToSet() {
         entityManager.getTransaction().begin();
 
-        Person foundPerson = entityManager.find(Person.class, 3L); // person PK = 3 (this is John)
+        Person foundPerson = new Person("Martina", 10);
+        entityManager.persist(foundPerson);
+        System.out.println("person added");
+
+                //entityManager.find(Person.class, 3L); // person PK = 3 (this is John)
         Animal newDog = new Animal("dog", "Oscar", false); // Oscar (will get id 4)
 
-        // "foundPerson.getAnimalsInContact().add(newDog)" doesn't generate a query, if not (see comments):
-        foundPerson.getAnimalsInContact().add(newDog); // must add cascading to Person mapping, otherwise the newDog entry will not be propagated (& persisted)
-        newDog.getPeopleInContact().add(foundPerson); // and then we must add the opposite mapping, so that the jointable is updated
+        System.out.println("???");
+
+        // now we would normally use
+        //foundPerson.getAnimalsInContact().add(newDog);
+        // which would cascade (we set up the cascade in Person entity), but it will only update the animal entity, not the join table
+        // to update the join table, we need to maintain the consistency of the data, keep the entities in sync
+        // for that we will use our special method and update the animal entity too
+        // because all updates of the FK need to go via the owner, the join table will be updated now
+        foundPerson.addAnimal(newDog);
+
+        System.out.println("cat added");
 
         entityManager.getTransaction().commit();
         entityManager.clear();
@@ -89,18 +115,17 @@ public class EntityService {
         entityManager.getTransaction().begin();
 
         Person foundPerson = entityManager.find(Person.class, 3L);
-        System.out.println("foundPerson = " + foundPerson);
+        //System.out.println("foundPerson = " + foundPerson);
         Animal firstAnimalFromSet = foundPerson.getAnimalsInContact().iterator().next();
-        System.out.println("firstAnimalFromSet = " + firstAnimalFromSet);
-        
-        //doesn't generate a query
-        foundPerson.getAnimalsInContact().remove(firstAnimalFromSet);
-        firstAnimalFromSet.getPeopleInContact().remove(foundPerson); // must remove also from other side
+        //System.out.println("firstAnimalFromSet = " + firstAnimalFromSet);
 
-        // HOW TO FIX THIS? add cascade!?
-        //entityManager.persist(foundPerson);
-
-//        entityManager.persist(firstAnimalFromSet);
+        // now we would normally use
+        foundPerson.removeAnimal(firstAnimalFromSet);
+        // which would cascade (we set up the cascade in Person entity), but it will only update the animal entity, not the join table
+        // to update the join table, we need to maintain the consistency of the data, keep the entities in sync
+        // for that we will use our special method and update the animal entity too
+        // because all updates of the FK need to go via the owner, the join table will be updated now
+        //foundPerson.removeAnimal(firstAnimalFromSet);
 
         entityManager.getTransaction().commit();
         entityManager.clear();
