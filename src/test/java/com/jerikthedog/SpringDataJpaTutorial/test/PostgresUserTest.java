@@ -1,9 +1,9 @@
 package com.jerikthedog.SpringDataJpaTutorial.test;
 
-import com.jerikthedog.SpringDataJpaTutorial.OneToOneUsingPrimaryKey.PKPostgresUser;
-import com.jerikthedog.SpringDataJpaTutorial.OneToOneUsingPrimaryKey.PKPostgresUserDetails;
-import com.jerikthedog.SpringDataJpaTutorial.neo_entity.PostgresUser;
-import com.jerikthedog.SpringDataJpaTutorial.neo_entity.PostgresUserDetails;
+import com.jerikthedog.SpringDataJpaTutorial.oneToOneUsingPrimaryKey.PKPostgresUser;
+import com.jerikthedog.SpringDataJpaTutorial.oneToOneUsingPrimaryKey.PKPostgresUserDetails;
+import com.jerikthedog.SpringDataJpaTutorial.bidirectionalOneToOne.PostgresUser;
+import com.jerikthedog.SpringDataJpaTutorial.bidirectionalOneToOne.PostgresUserDetails;
 import com.jerikthedog.SpringDataJpaTutorial.repository.PKPostgresUserDetailsRepository;
 import com.jerikthedog.SpringDataJpaTutorial.repository.PostgresUserRepository;
 import org.junit.jupiter.api.Test;

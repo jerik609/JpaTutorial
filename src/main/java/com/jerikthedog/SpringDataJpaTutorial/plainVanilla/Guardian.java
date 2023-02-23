@@ -1,4 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.entity;
+package com.jerikthedog.SpringDataJpaTutorial.plainVanilla;
 
 
 // we want the guardian data to be in the same table as student

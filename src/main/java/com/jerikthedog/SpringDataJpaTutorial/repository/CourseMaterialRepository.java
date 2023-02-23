@@ -1,6 +1,6 @@
 package com.jerikthedog.SpringDataJpaTutorial.repository;
 
-import com.jerikthedog.SpringDataJpaTutorial.entity.CourseMaterial;
+import com.jerikthedog.SpringDataJpaTutorial.plainVanilla.CourseMaterial;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

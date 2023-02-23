@@ -1,4 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.OneToOneUsingPrimaryKey;
+package com.jerikthedog.SpringDataJpaTutorial.oneToOneUsingPrimaryKey;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

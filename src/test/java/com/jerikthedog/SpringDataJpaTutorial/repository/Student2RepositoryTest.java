@@ -1,7 +1,7 @@
 package com.jerikthedog.SpringDataJpaTutorial.repository;
 
-import com.jerikthedog.SpringDataJpaTutorial.entity.Guardian;
-import com.jerikthedog.SpringDataJpaTutorial.entity.Student2;
+import com.jerikthedog.SpringDataJpaTutorial.plainVanilla.Guardian;
+import com.jerikthedog.SpringDataJpaTutorial.plainVanilla.Student2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.test;
+package com.jerikthedog.SpringDataJpaTutorial.objectProxyExample;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;

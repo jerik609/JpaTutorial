@@ -1,4 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.test;
+package com.jerikthedog.SpringDataJpaTutorial.objectProxyExample;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;

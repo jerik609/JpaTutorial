@@ -1,8 +1,7 @@
-package com.jerikthedog.SpringDataJpaTutorial.one2many;
+package com.jerikthedog.SpringDataJpaTutorial.bidirectionalManyToOne2;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

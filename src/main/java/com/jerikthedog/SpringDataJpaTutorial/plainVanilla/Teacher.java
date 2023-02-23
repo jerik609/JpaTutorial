@@ -1,4 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.entity;
+package com.jerikthedog.SpringDataJpaTutorial.plainVanilla;
 
 // one teacher can teach many courses -> one:many
 // many courses can be taught by one teacher -> many:one
@@ -8,8 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Data

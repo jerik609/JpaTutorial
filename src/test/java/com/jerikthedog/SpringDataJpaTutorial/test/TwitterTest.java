@@ -1,9 +1,9 @@
 package com.jerikthedog.SpringDataJpaTutorial.test;
 
-import com.jerikthedog.SpringDataJpaTutorial.many2many.Course;
-import com.jerikthedog.SpringDataJpaTutorial.many2many.Student;
-import com.jerikthedog.SpringDataJpaTutorial.one2many.Post;
-import com.jerikthedog.SpringDataJpaTutorial.one2many.Tweet;
+import com.jerikthedog.SpringDataJpaTutorial.bidirectionalManyToMany.Course;
+import com.jerikthedog.SpringDataJpaTutorial.bidirectionalManyToMany.Student;
+import com.jerikthedog.SpringDataJpaTutorial.bidirectionalManyToOne2.Post;
+import com.jerikthedog.SpringDataJpaTutorial.bidirectionalManyToOne2.Tweet;
 import com.jerikthedog.SpringDataJpaTutorial.repository.ManyManyCourseRepository;
 import com.jerikthedog.SpringDataJpaTutorial.repository.ManyManyStudentRepository;
 import com.jerikthedog.SpringDataJpaTutorial.repository.OneToManyTweetRepository;
@@ -14,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @SpringBootTest
 public class TwitterTest {

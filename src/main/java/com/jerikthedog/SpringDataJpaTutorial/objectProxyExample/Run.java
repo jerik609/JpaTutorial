@@ -1,8 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.test;
-
-import org.springframework.aop.framework.ProxyFactory;
-
-import java.lang.reflect.Proxy;
+package com.jerikthedog.SpringDataJpaTutorial.objectProxyExample;
 
 public class Run {
 

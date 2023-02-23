@@ -1,4 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.neo_entity;
+package com.jerikthedog.SpringDataJpaTutorial.bidirectionalOneToOne;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

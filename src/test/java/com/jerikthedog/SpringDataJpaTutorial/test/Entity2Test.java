@@ -1,7 +1,7 @@
 package com.jerikthedog.SpringDataJpaTutorial.test;
 
-import com.jerikthedog.SpringDataJpaTutorial.entity2.Tweet2;
-import com.jerikthedog.SpringDataJpaTutorial.entity2.UserX;
+import com.jerikthedog.SpringDataJpaTutorial.bidirectionalManyToOne.Tweet2;
+import com.jerikthedog.SpringDataJpaTutorial.bidirectionalManyToOne.UserX;
 import com.jerikthedog.SpringDataJpaTutorial.repository.TweetRepository;
 import com.jerikthedog.SpringDataJpaTutorial.repository.UserXRepository;
 import org.junit.jupiter.api.Test;

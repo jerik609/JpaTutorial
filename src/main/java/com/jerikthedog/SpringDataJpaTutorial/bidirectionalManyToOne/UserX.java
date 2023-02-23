@@ -1,4 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.entity2;
+package com.jerikthedog.SpringDataJpaTutorial.bidirectionalManyToOne;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

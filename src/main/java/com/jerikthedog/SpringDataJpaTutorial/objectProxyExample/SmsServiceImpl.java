@@ -1,4 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.test;
+package com.jerikthedog.SpringDataJpaTutorial.objectProxyExample;
 
 public class SmsServiceImpl implements SmsService {
     public void send(String message) {

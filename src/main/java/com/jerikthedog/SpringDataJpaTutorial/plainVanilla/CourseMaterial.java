@@ -1,4 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.entity;
+package com.jerikthedog.SpringDataJpaTutorial.plainVanilla;
 
 import jakarta.persistence.*;
 import lombok.*;

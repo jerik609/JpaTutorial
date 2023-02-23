@@ -1,4 +1,4 @@
-package com.jerikthedog.SpringDataJpaTutorial.many2many;
+package com.jerikthedog.SpringDataJpaTutorial.bidirectionalManyToMany;
 
 import jakarta.persistence.*;
 import lombok.*;
